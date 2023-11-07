@@ -3,7 +3,7 @@
 GET http://localhost:3007/api/shoes
 
 #get shoes by brand
-GET http://localhost:3007/api/shoes/brand/:brandname
+GET http://localhost:3007/api/shoes/brand/:Louis Vuitton
 
 #get shoes by size
 GET http://localhost:3007/api/shoes/size/:size

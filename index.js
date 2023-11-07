@@ -3,33 +3,9 @@ import { engine } from "express-handlebars";
 import bodyParser from "body-parser";
 import flash from "connect-flash";
 import session from "express-session";
-import pgPromise from "pg-promise";
-import shoe_service from "./service/shoe_service.js";
-import shoe_api from "./api/shoe.js";
 import home from "./routes/home.js";
 import shoes from "./routes/shoes.js";
-import cors from "cors"
 
-
-
-const pgp = pgPromise();
-
-//SSL connection
-let useSSL = false;
-let local = process.env.LOCAL || false;
-if (process.env.DATABASE_URL && !local) {
-    useSSL = true;
-}
-
-// Database connection
-const connectionString = process.env.DATABASE_URL || "postgres://otzyymfe:0lGTbqnyGfXApYOVD2IceTfouyXP0oxi@silly.db.elephantsql.com/otzyymfe?ssl=true";
-const database = pgp(connectionString);
-
-//database instance
-const shoe_service_instance = shoe_service(database);
-
-//api instance
-const api = shoe_api(shoe_service_instance)
 
 //route instances
 const home_route = home()
@@ -57,24 +33,16 @@ app.use(function (req, res, next) {
     res.locals.messages = req.flash();
     next();
 });
-app.use(cors());
 
-
-
-//API routes
-app.get('/api/shoes', api.all_shoes);
-app.get('/api/shoes/brand/:brandname',api.shoes_by_brand);
-app.get('/api/shoes/size/:size',api.shoes_by_size);
-app.get('/api/shoes/brand/:brandname/size/:size',api.shoes_by_brand_and_size);
-app.post('/api/shoes/sold/:id', api.sold_shoes);
-app.post('/api/shoes/add', api.insert);
-// app.post('/api/shoes/add', api.add);
-// app.post('/api/shoes/remove/:id', api.remove);
 
 //screen routes
 app.get('/', home_route.home_page);
 app.get('/shoes', shoes_route.shoes_page)
-
+app.get('/shoes/brand/:brandname', shoes_route.get_brand)
+app.get('/shoes/brand/:size', shoes_route.get_size)
+app.get('/shoes/brand/:brandname/size/:size', shoes_route.get_size_and_brand)
+app.get('/shoes/filter', shoes_route.filterShoes);
+ 
 // Start the server
 const PORT = process.env.PORT || 3007;
 app.listen(PORT, function () {

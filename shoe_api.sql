@@ -24,35 +24,5 @@ INSERT INTO shoes (brand_name, shoe_name, shoe_size, stock_quantity, color, pric
 VALUES ('STEVE MADDEN', 'TECY RED LEATHER', 5, 30, 'Red', 1599.99, 'https://stevemadden.co.za/cdn/shop/files/STEVEMADDEN-SHOES_TECY_RED-LEATHER_grande.jpg?v=1689665991', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
 
 INSERT INTO shoes (brand_name, shoe_name, shoe_size, stock_quantity, color, price, image_url, description)
-VALUES ('PRADA', 'High-heeled satin sandals', 6, 10, 'Black', 10 599.99, 'https://www.prada.com/content/dam/pradabkg_products/1/1XP/1XP48B/049F0002/1XP48B_049_F0002_F_135_SLR.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
-
-INSERT INTO shoes (brand_name, shoe_name, shoe_size, stock_quantity, color, price, image_url, description)
-VALUES ('PRADA', 'High-heeled satin sandals', 5, 30, 'Orange', 10 599.99, 'https://www.prada.com/content/dam/pradabkg_products/1/1XP/1XP48B/049F0049/1XP48B_049_F0049_F_135_SLR.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
-
-
-
-
-
-            
-           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
+VALUES ('Louis Vuitton', 'Lock-It Mule', 7, 25, 'Blanc', 1499.99, 'https://cdna.lystit.com/520/650/n/photos/24sevres/a9b8ea0b/louis-vuitton-blanc-Lock-It-Mule.jpeg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
 

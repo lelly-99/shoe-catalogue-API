@@ -6,6 +6,10 @@ import session from "express-session";
 import pgPromise from "pg-promise";
 import shoe_service from "./service/shoe_service.js";
 import shoe_api from "./api/shoe.js";
+import home from "./routes/home.js";
+import shoes from "./routes/shoes.js";
+import cors from "cors"
+
 
 
 const pgp = pgPromise();
@@ -26,6 +30,10 @@ const shoe_service_instance = shoe_service(database);
 
 //api instance
 const api = shoe_api(shoe_service_instance)
+
+//route instances
+const home_route = home()
+const shoes_route = shoes()
 
 //expressJS instance
 const app = express();
@@ -49,6 +57,7 @@ app.use(function (req, res, next) {
     res.locals.messages = req.flash();
     next();
 });
+app.use(cors());
 
 
 
@@ -58,8 +67,13 @@ app.get('/api/shoes/brand/:brandname',api.shoes_by_brand);
 app.get('/api/shoes/size/:size',api.shoes_by_size);
 app.get('/api/shoes/brand/:brandname/size/:size',api.shoes_by_brand_and_size);
 app.post('/api/shoes/sold/:id', api.sold_shoes);
-app.post('/api/shoes', api.insert);
+app.post('/api/shoes/add', api.insert);
+// app.post('/api/shoes/add', api.add);
+// app.post('/api/shoes/remove/:id', api.remove);
 
+//screen routes
+app.get('/', home_route.home_page);
+app.get('/shoes', shoes_route.shoes_page)
 
 // Start the server
 const PORT = process.env.PORT || 3007;

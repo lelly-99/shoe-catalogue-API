@@ -1,0 +1,17 @@
+<br>
+<div class="container">
+    <div class="row">
+        {{#each shoes.data}}
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+                <img src="{{image_url}}" class="card-img-top" alt="{{shoe_name}}" style="height: 150px; width: 150px">
+                <div class="card-body">
+                    <h5 class="card-title">{{brand_name}}</h5>
+                    <span class="card-text">{{shoe_name}}</span>
+                    <p class="card-text"> R{{price}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
